@@ -1,0 +1,5 @@
+rank_test_score,mean_test_score,std_test_score,mean_train_score,params
+1,-147.9802867051262,17.65452257470514,-39.02349951194263,"{'model__subsample': 1.0, 'model__reg_lambda': 1, 'model__min_child_weight': 5, 'model__max_depth': 8, 'model__learning_rate': 0.05, 'model__colsample_bytree': 1.0}"
+2,-148.8369073319843,17.43665950331274,-14.798946440037819,"{'model__subsample': 1.0, 'model__reg_lambda': 1, 'model__min_child_weight': 5, 'model__max_depth': 8, 'model__learning_rate': 0.1, 'model__colsample_bytree': 1.0}"
+3,-151.31482804858993,16.29314126313554,-24.92686565827917,"{'model__subsample': 1.0, 'model__reg_lambda': 1, 'model__min_child_weight': 5, 'model__max_depth': 6, 'model__learning_rate': 0.1, 'model__colsample_bytree': 1.0}"
+4,-174.745678823226,1.11491615513971,-100.5003590453366,"{'model__subsample': 0.8, 'model__reg_lambda': 5, 'model__min_child_weight': 3, 'model__max_depth': 8, 'model__learning_rate': 0.03, 'model__colsample_bytree': 1.0}"
