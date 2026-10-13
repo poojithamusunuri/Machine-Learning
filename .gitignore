@@ -1,1 +1,16 @@
+# macOS
 .DS_Store
+
+# Python virtual environments
+.venv/
+.MLvenv/
+.MLvenv_broken/
+.MLvenv_old/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
