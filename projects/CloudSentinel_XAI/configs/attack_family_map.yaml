@@ -1,0 +1,19 @@
+family_by_label:
+  BENIGN: BENIGN
+  Bot: BOTNET
+  Botnet: BOTNET
+  DDoS attacks-LOIC-HTTP: DDOS
+  DDoS attacks-LOIC-UDP: DDOS
+  DDoS attacks-HOIC: DDOS
+  DoS attacks-Hulk: DOS
+  DoS attacks-SlowHTTPTest: DOS
+  DoS attacks-GoldenEye: DOS
+  DoS attacks-Slowloris: DOS
+  FTP-BruteForce: BRUTE_FORCE
+  SSH-Bruteforce: BRUTE_FORCE
+  Brute Force -Web: WEB_ATTACK
+  Brute Force -XSS: WEB_ATTACK
+  SQL Injection: WEB_ATTACK
+  Infilteration: INFILTRATION
+  Infiltration: INFILTRATION
+  Heartbleed: HEARTBLEED

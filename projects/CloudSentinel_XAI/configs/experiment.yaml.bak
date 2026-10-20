@@ -1,0 +1,11 @@
+data_dir: data/raw
+output_dir: outputs
+artifact_dir: artifacts
+random_seed: 42
+heldout_family: INFILTRATION
+max_rows_per_file: null
+benign_label: BENIGN
+test_size: 0.20
+validation_size: 0.20
+benign_fpr_target: 0.01
+contamination: 0.01
