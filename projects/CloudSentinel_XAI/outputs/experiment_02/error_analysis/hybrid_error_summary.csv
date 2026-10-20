@@ -1,0 +1,4 @@
+original_label,attack_family,hybrid_error_type,count
+Brute Force -Web,WEB_ATTACK,FALSE_NEGATIVE,3
+Brute Force -XSS,WEB_ATTACK,FALSE_NEGATIVE,1
+Benign,BENIGN,FALSE_POSITIVE,72

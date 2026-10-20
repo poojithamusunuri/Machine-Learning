@@ -1,0 +1,30 @@
+{
+  "model_path": "outputs/experiment_02/artifacts/cloudsentinel_pipeline.joblib",
+  "data_dir": "data/deduplicated",
+  "heldout_family_excluded": "DOS",
+  "test_rows": 9520,
+  "hybrid_error_rows": 76,
+  "hybrid_false_positives": 72,
+  "hybrid_false_negatives": 4,
+  "confusion_matrices": {
+    "supervised": {
+      "TN": 5990,
+      "FP": 10,
+      "FN": 4,
+      "TP": 3516
+    },
+    "anomaly": {
+      "TN": 5938,
+      "FP": 62,
+      "FN": 3505,
+      "TP": 15
+    },
+    "hybrid": {
+      "TN": 5928,
+      "FP": 72,
+      "FN": 4,
+      "TP": 3516
+    }
+  },
+  "note": "Known-family test errors only. The held-out family is excluded. The saved model and thresholds were not modified."
+}

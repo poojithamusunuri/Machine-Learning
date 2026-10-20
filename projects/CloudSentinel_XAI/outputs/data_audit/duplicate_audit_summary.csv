@@ -1,0 +1,6 @@
+metric,value
+total_rows,70566
+feature_columns,79
+rows_in_repeated_feature_groups,6234
+repeated_feature_groups_with_conflicting_labels,0
+repeated_feature_groups_spanning_multiple_files,0

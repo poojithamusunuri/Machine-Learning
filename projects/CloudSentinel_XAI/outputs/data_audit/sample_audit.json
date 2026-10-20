@@ -1,0 +1,57 @@
+{
+  "total_rows": 70566,
+  "files": [
+    {
+      "file": "Friday-23-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 10566,
+      "columns": 80,
+      "labels": {
+        "Benign": 10000,
+        "Brute Force -Web": 362,
+        "Brute Force -XSS": 151,
+        "SQL Injection": 53
+      },
+      "duplicate_full_rows_within_file": 0,
+      "missing_cells": 45,
+      "infinite_numeric_cells": 73
+    },
+    {
+      "file": "Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 30000,
+      "columns": 80,
+      "labels": {
+        "Benign": 10000,
+        "DoS attacks-Slowloris": 10000,
+        "DoS attacks-GoldenEye": 10000
+      },
+      "duplicate_full_rows_within_file": 629,
+      "missing_cells": 54,
+      "infinite_numeric_cells": 132
+    },
+    {
+      "file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 30000,
+      "columns": 80,
+      "labels": {
+        "FTP-BruteForce": 10000,
+        "SSH-Bruteforce": 10000,
+        "Benign": 10000
+      },
+      "duplicate_full_rows_within_file": 2967,
+      "missing_cells": 26,
+      "infinite_numeric_cells": 60
+    }
+  ],
+  "duplicate_full_rows_across_combined_sample": 6234,
+  "duplicate_feature_rows_ignoring_label": 6234,
+  "label_counts": {
+    "Benign": 30000,
+    "DoS attacks-Slowloris": 10000,
+    "DoS attacks-GoldenEye": 10000,
+    "FTP-BruteForce": 10000,
+    "SSH-Bruteforce": 10000,
+    "Brute Force -Web": 362,
+    "Brute Force -XSS": 151,
+    "SQL Injection": 53
+  }
+}

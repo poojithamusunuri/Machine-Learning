@@ -1,0 +1,9 @@
+{
+  "model_path":"outputs\/experiment_02\/artifacts\/cloudsentinel_pipeline.joblib",
+  "data_dir":"data\/deduplicated",
+  "example_type":"known-family validation attack",
+  "validation_subset_rows":300,
+  "background_rows":100,
+  "encoded_feature_count":77,
+  "interpretation":"One-feature median-replacement sensitivity; not SHAP and not a causal explanation."
+}

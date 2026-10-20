@@ -1,0 +1,45 @@
+{
+  "method": "Within each source file, keep the first occurrence of each identical feature vector, excluding Label from the duplicate key.",
+  "files": [
+    {
+      "source_file": "Friday-23-02-2018_TrafficForML_CICFlowMeter.csv",
+      "original_rows": 10566,
+      "deduplicated_rows": 10566,
+      "removed_rows": 0,
+      "labels_after_deduplication": {
+        "Benign": 10000,
+        "Brute Force -Web": 362,
+        "Brute Force -XSS": 151,
+        "SQL Injection": 53
+      },
+      "output_file": "data/deduplicated/Friday-23-02-2018_TrafficForML_CICFlowMeter.csv"
+    },
+    {
+      "source_file": "Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv",
+      "original_rows": 30000,
+      "deduplicated_rows": 29371,
+      "removed_rows": 629,
+      "labels_after_deduplication": {
+        "Benign": 9999,
+        "DoS attacks-GoldenEye": 9997,
+        "DoS attacks-Slowloris": 9375
+      },
+      "output_file": "data/deduplicated/Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv"
+    },
+    {
+      "source_file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "original_rows": 30000,
+      "deduplicated_rows": 27033,
+      "removed_rows": 2967,
+      "labels_after_deduplication": {
+        "Benign": 10000,
+        "SSH-Bruteforce": 9321,
+        "FTP-BruteForce": 7712
+      },
+      "output_file": "data/deduplicated/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv"
+    }
+  ],
+  "total_original_rows": 70566,
+  "total_deduplicated_rows": 66970,
+  "total_removed_rows": 3596
+}

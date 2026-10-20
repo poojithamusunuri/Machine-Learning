@@ -1,0 +1,30 @@
+{
+  "model_path": "outputs/experiment_02/artifacts/cloudsentinel_pipeline.joblib",
+  "data_dir": "data/deduplicated",
+  "heldout_family": "DOS",
+  "evaluation_rows": 49371,
+  "heldout_attack_rows": 19372,
+  "benign_rows": 29999,
+  "hybrid_error_rows": 15230,
+  "confusion_matrices": {
+    "supervised": {
+      "TN": 29962,
+      "FP": 37,
+      "FN": 19063,
+      "TP": 309
+    },
+    "anomaly": {
+      "TN": 29714,
+      "FP": 285,
+      "FN": 15217,
+      "TP": 4155
+    },
+    "hybrid": {
+      "TN": 29677,
+      "FP": 322,
+      "FN": 14908,
+      "TP": 4464
+    }
+  },
+  "note": "Held-out-family evaluation on the existing deduplicated dataset using the saved model and thresholds. No retraining or threshold tuning was performed. This is a held-out attack-family proxy, not proof of real-world zero-day detection."
+}

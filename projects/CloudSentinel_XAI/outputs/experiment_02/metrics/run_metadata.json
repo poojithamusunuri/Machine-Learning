@@ -1,0 +1,41 @@
+{
+  "rows": 66970,
+  "heldout_family": "DOS",
+  "heldout_attack_rows": 19372,
+  "heldout_eval_benign_rows": 6000,
+  "train_rows": 28558,
+  "validation_rows": 9520,
+  "known_test_rows": 9520,
+  "thresholds": {
+    "supervised": 0.3505725825925487,
+    "anomaly": 0.6389975281639423
+  },
+  "labels": {
+    "Benign": 29999,
+    "DoS attacks-GoldenEye": 9997,
+    "DoS attacks-Slowloris": 9375,
+    "SSH-Bruteforce": 9321,
+    "FTP-BruteForce": 7712,
+    "Brute Force -Web": 362,
+    "Brute Force -XSS": 151,
+    "SQL Injection": 53
+  },
+  "source_files": [
+    {
+      "file": "data/deduplicated/Friday-23-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 10566,
+      "columns": 81
+    },
+    {
+      "file": "data/deduplicated/Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 29371,
+      "columns": 81
+    },
+    {
+      "file": "data/deduplicated/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "rows": 27033,
+      "columns": 81
+    }
+  ],
+  "protocol": "held-out family excluded from fitting/calibration"
+}
