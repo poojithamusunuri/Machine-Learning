@@ -1,1 +1,198 @@
+# CloudSentinel-XAI
 
+## Explainable, risk-aware detection of unseen attack families in cloud network traffic
+
+CloudSentinel-XAI is a reproducible research project comparing supervised,
+anomaly-based, and hybrid machine-learning methods for network intrusion
+detection using flow-level traffic data.
+
+This is an offline research benchmark, not a production security product or
+a claim of reliable real-world zero-day detection.
+
+## Research question
+
+Does combining a supervised known-attack classifier with a benign-only
+anomaly detector improve detection of an attack family withheld from
+training, while keeping false-positive rates measurable?
+
+## Methods
+
+- **Supervised detector:** Random Forest trained on labelled known families.
+- **Anomaly detector:** Isolation Forest fitted using benign training traffic.
+- **Hybrid detector:** Combines supervised and anomaly-based alerts.
+- **Evaluation:** Known-family testing and a held-out attack-family protocol.
+- **Explainability:** Local feature-replacement sensitivity and global
+  permutation sensitivity analyses.
+- **Error analysis:** Reviews false positives and false negatives, including
+  the held-out family.
+
+Feature sensitivity is a diagnostic, not a causal explanation. The
+held-out-family protocol is a controlled novelty proxy; it does not prove
+generalisation to every previously unseen real-world attack.
+
+## Dataset
+
+This project uses the public CSE-CIC-IDS2018 dataset:
+
+- Dataset information: https://www.unb.ca/cic/datasets/ids-2018.html
+- AWS Open Data Registry: https://registry.opendata.aws/cse-cic-ids2018/
+- Public S3 bucket: `s3://cse-cic-ids2018/`
+
+The dataset is not included in this repository. Review the dataset terms,
+available files, and file sizes before downloading data. Keep raw CSVs out
+of Git history.
+
+The current Experiment 02 workflow was developed with these three flow CSVs
+in `data/raw/`:
+
+- `Friday-23-02-2018_TrafficForML_CICFlowMeter.csv`
+- `Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv`
+- `Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv`
+
+Results may differ if you use different source files, change their contents,
+or change software versions. Record dataset provenance when reproducing
+the experiment.
+
+## Environment setup (macOS)
+
+Python 3.14.4 has been tested with the project's dependency installation
+and automated tests in the development environment. Other Python versions
+may work, but have not all been verified here.
+
+From the repository root:
+
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip check
+python -m pytest -q
+
+
+If `python3` points to a different Python version on your Mac, use the
+desired interpreter explicitly when creating the virtual environment.
+
+## Prepare the data
+
+1. Obtain the three CSV files listed above from the official dataset source.
+2. Place the original files in `data/raw/`.
+3. Create a reproducible, per-label sample:
+
+   
+   python scripts/create_sample.py
+   
+
+   This script reads CSVs from `data/raw/` and writes sampled CSVs to
+   `data/sampled/`. Its current settings cap each label at 10,000 rows per
+   source file and use seed 42.
+
+4. Audit the sample:
+
+   
+   python scripts/audit_sample.py
+   python scripts/audit_duplicates.py
+   
+
+   These scripts write audit results to `outputs/data_audit/`.
+
+5. Create the deduplicated sample:
+
+   
+   python scripts/create_deduplicated_sample.py
+   
+
+   The script reads `data/sampled/`, writes to `data/deduplicated/`, and
+   creates `outputs/data_audit/deduplication_report.json`. It checks for
+   conflicting labels among duplicate feature vectors before removing
+   duplicates within each source file.
+
+Do not run the sampling or deduplication steps against valuable source data
+with modified paths unless you understand the scripts' fixed input and
+output locations. The raw CSVs are not modified by these scripts.
+
+## Run Experiment 02
+
+From the project root, after preparing the data:
+
+
+python -m src.experiments.run_experiment \
+  --config configs/experiment_02.yaml
+
+
+The checked-in Experiment 02 configuration uses:
+
+- Input: `data/deduplicated/`
+- Held-out family: `DOS`
+- Random seed: `42`
+- Output directory: `outputs/experiment_02/`
+- Model artifact directory: `outputs/experiment_02/artifacts/`
+
+The held-out family is excluded from model fitting and threshold calibration.
+The evaluation measures detection of that family against benign traffic.
+The reported result applies to this dataset and protocol, not to all possible
+unseen attacks.
+
+## Additional analysis
+
+Run these from the repository root after a successful Experiment 02 run:
+
+
+python scripts/run_explainability.py
+python scripts/test_explanation_stability.py
+python scripts/run_error_analysis.py
+python scripts/run_heldout_error_analysis.py
+
+
+These scripts write explainability and error-analysis outputs under
+`outputs/experiment_02/`. They require the prepared data and experiment
+artifacts generated by the preceding workflow.
+
+## Outputs and reports
+
+- `reports/research_report.md`: main research report.
+- `outputs/experiment_02/metrics/`: experiment metrics and run metadata.
+- `outputs/experiment_02/explanations/`: local sensitivity, global
+  permutation sensitivity, and stability summaries.
+- `outputs/experiment_02/error_analysis/`: known-family error summaries.
+- `outputs/experiment_02/heldout_error_analysis/`: held-out-family
+  error summaries.
+- `outputs/data_audit/`: sample and deduplication audit summaries.
+
+Selected small research outputs are versioned in this repository. Raw data,
+virtual environments, model binaries, and detailed row-level prediction
+files are excluded. Re-run the workflow to regenerate outputs as needed.
+
+## Notebooks
+
+The `notebooks/` directory contains exploratory and analysis notebooks.
+Some notebooks expect local datasets or outputs generated by the scripts.
+Run the reproducible command-line workflow above first, and check notebook
+paths and assumptions before executing them.
+
+## Tests
+
+Run the automated tests from the repository root:
+
+
+python -m pytest -q
+
+
+## Scientific limitations
+
+- A held-out attack family is a controlled novelty proxy, not proof of
+  detecting arbitrary real-world zero-day attacks.
+- This is an offline, flow-level experiment, not a live cloud sensor.
+- Results depend on the selected files, preprocessing, sampling,
+  deduplication, split strategy, and evaluation protocol.
+- Feature sensitivity and permutation importance are diagnostic analyses;
+  they do not establish causality.
+- Do not describe this project as production-deployed or claim performance
+  figures that have not been reproduced.
+
+## Resume-safe summary
+
+Built a reproducible network intrusion-detection research pipeline comparing
+supervised, anomaly-based, and hybrid ML detectors under a held-out
+attack-family protocol; measured false-alarm trade-offs and investigated
+feature-level alert sensitivity.
